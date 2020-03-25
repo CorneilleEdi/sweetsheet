@@ -4,6 +4,8 @@ Show beautiful bottom sheet as confirmation dialog quickly and easily.
 | nice        | warning       |
 |:-------------:|:------------------:|
 | ![nice](./assets/nice_sheet.jpg)         | ![warning](./assets/warning_sheet.jpg) |
+
+
 and two more.
 ## Getting Started
 
