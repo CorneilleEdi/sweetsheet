@@ -1,6 +1,6 @@
 name: sweetsheet
 description: Show beautiful bottom sheet as confirmation dialog quickly and easily.
-version: 0.1.0
+version: 0.1.2
 homepage: https://github.com/CorneilleEdi/sweetsheet
 
 environment:

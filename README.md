@@ -3,7 +3,9 @@ Show beautiful bottom sheet as confirmation dialog quickly and easily.
 
 | nice        | warning       |
 |:-------------:|:------------------:|
-| ![nice](./assets/nice_sheet.jpg)         | ![warning](./assets/warning_sheet.jpg) |
+| ![nice](https://github.com/CorneilleEdi/sweetsheet/raw/master/assets/nice_sheet.jpg)        | ![warning](https://github.com/CorneilleEdi/sweetsheet/raw/master/assets/warning_sheet.jpg) |
+
+
 and two more.
 ## Getting Started
 
@@ -49,15 +51,24 @@ show({
 This is the signature of the `SweetSheetAction` widget.
 
 ```dart
-SweetSheetAction({
-    @required this.title,
-    @required this.onPressed,
-    this.icon
-});
+class SweetSheetAction extends StatelessWidget {
+  final String title;
+  final VoidCallback onPressed;
+  final IconData icon;
+
+  SweetSheetAction({@required this.title, @required this.onPressed, this.icon});
+}
 ```
 
-> Attention : At least one action is required.
+> Attention : At least one action is required and the icons are IconData for uniformity purpose.
 
+
+The `SweetSheetType` is an enum which have four values and it determine the color of the sheet:
+
+- SweetSheetType.SUCCESS (green)
+- SweetSheetType.DANGER (red)
+- SweetSheetType.WARNING (orange)
+- SweetSheetType.NICE (blue)
 
 ## Example:
 ```dart
@@ -79,7 +90,7 @@ _sweetSheet.show(
         Navigator.of(context).pop();
       },
       title: 'CONNECT',
-      icon: Icon(Icons.open_in_new),
+      icon: Icons.open_in_new,
     ),
 );
  

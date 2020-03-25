@@ -41,13 +41,13 @@ class SweetSheet {
               width: double.infinity,
               color: sheetColor(type)[0],
               padding:
-              const EdgeInsets.symmetric(horizontal: 24.0, vertical: 24.0),
+                  const EdgeInsets.symmetric(horizontal: 24.0, vertical: 24.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
                     title,
-                    style: TextStyle(fontSize: 28),
+                    style: TextStyle(fontSize: 28,color: Colors.white,),
                     textAlign: TextAlign.start,
                   ),
                   _buildContent(description, icon)
@@ -74,28 +74,32 @@ class SweetSheet {
       child: SingleChildScrollView(
         child: icon != null
             ? Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Expanded(
-              child: Text(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Expanded(
+                    child: Text(
+                      description,
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 16,
+                  ),
+                  Icon(
+                    icon,
+                    size: 52,
+                    color: Colors.white,
+                  )
+                ],
+              )
+            : Text(
                 description,
                 style: TextStyle(fontSize: 18),
               ),
-            ),
-            SizedBox(
-              width: 16,
-            ),
-            Icon(
-              icon,
-              size: 52,
-            )
-          ],
-        )
-            : Text(
-          description,
-          style: TextStyle(fontSize: 18),
-        ),
       ),
     );
   }
@@ -119,7 +123,7 @@ enum SweetSheetType { SUCCESS, DANGER, NICE, WARNING }
 class SweetSheetAction extends StatelessWidget {
   final String title;
   final VoidCallback onPressed;
-  final Icon icon;
+  final IconData icon;
 
   SweetSheetAction({@required this.title, @required this.onPressed, this.icon});
 
@@ -127,13 +131,13 @@ class SweetSheetAction extends StatelessWidget {
   Widget build(BuildContext context) {
     return icon == null
         ? FlatButton(
-      onPressed: onPressed,
-      child: Text(title),
-    )
+            onPressed: onPressed,
+            child: Text(title),
+          )
         : FlatButton.icon(
-      onPressed: onPressed,
-      label: Text(title),
-      icon: icon,
-    );
+            onPressed: onPressed,
+            label: Text(title),
+            icon: Icon(icon),
+          );
   }
 }

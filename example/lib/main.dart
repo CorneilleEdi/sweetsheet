@@ -106,7 +106,7 @@ class _HomePageState extends State<HomePage> {
                       Navigator.of(context).pop();
                     },
                     title: 'OPEN SETTING',
-                    icon: Icon(Icons.open_in_new),
+                    icon: Icons.open_in_new,
                   ),
                 );
               },
@@ -133,7 +133,7 @@ class _HomePageState extends State<HomePage> {
                       Navigator.of(context).pop();
                     },
                     title: 'CONNECT',
-                    icon: Icon(Icons.open_in_new),
+                    icon: Icons.open_in_new,
                   ),
                 );
               },
