@@ -18,7 +18,7 @@ Add this to your package's pubspec.yaml file:
 
 ```
 dependencies:
-  sweetsheet: 0.1.0
+  sweetsheet: ^0.1.2
 ```
 
 And import it:
