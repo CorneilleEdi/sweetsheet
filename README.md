@@ -11,7 +11,6 @@ Show beautiful bottom sheet as confirmation dialog quickly and easily.
 | ![success](https://github.com/CorneilleEdi/sweetsheet/raw/master/assets/success.jpg)        | ![danger](https://github.com/CorneilleEdi/sweetsheet/raw/master/assets/danger.jpg) |
 
 
-and two more.
 ## Getting Started
 
 With increasingly large smartphones, it has become almost impossible to have good ergonomics in an application using confirmation dialogs. 

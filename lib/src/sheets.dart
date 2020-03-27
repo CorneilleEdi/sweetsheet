@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class SweetSheet {
-  List<Color> sheetColor(SweetSheetType type) {
+  List<Color> _sheetColor(SweetSheetType type) {
     switch (type) {
       case SweetSheetType.NICE:
         return [Color(0xff2979FF), Color(0xff0D47A1)];
@@ -38,7 +38,7 @@ class SweetSheet {
           children: <Widget>[
             Container(
               width: double.infinity,
-              color: sheetColor(type)[0],
+              color: _sheetColor(type)[0],
               padding:
                   const EdgeInsets.symmetric(horizontal: 24.0, vertical: 24.0),
               child: Column(
@@ -55,7 +55,7 @@ class SweetSheet {
             ),
             Container(
               padding: const EdgeInsets.all(8.0),
-              color: sheetColor(type)[1],
+              color: _sheetColor(type)[1],
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: _buildActions(positive, negative),
