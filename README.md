@@ -6,6 +6,11 @@ Show beautiful bottom sheet as confirmation dialog quickly and easily.
 | ![nice](https://github.com/CorneilleEdi/sweetsheet/raw/master/assets/nice_sheet.jpg)        | ![warning](https://github.com/CorneilleEdi/sweetsheet/raw/master/assets/warning_sheet.jpg) |
 
 
+| success        | danger       |
+|:-------------:|:------------------:|
+| ![success](https://github.com/CorneilleEdi/sweetsheet/raw/master/assets/success.jpg)        | ![danger](https://github.com/CorneilleEdi/sweetsheet/raw/master/assets/danger.jpg) |
+
+
 and two more.
 ## Getting Started
 
@@ -18,7 +23,7 @@ Add this to your package's pubspec.yaml file:
 
 ```
 dependencies:
-  sweetsheet: ^0.1.2
+  sweetsheet: ^0.1.3
 ```
 
 And import it:

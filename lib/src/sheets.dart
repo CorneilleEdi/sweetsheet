@@ -6,7 +6,6 @@ class SweetSheet {
       case SweetSheetType.NICE:
         return [Color(0xff2979FF), Color(0xff0D47A1)];
         break;
-
       case SweetSheetType.SUCCESS:
         return [Color(0xff009688), Color(0xff00695C)];
         break;
@@ -98,7 +97,7 @@ class SweetSheet {
               )
             : Text(
                 description,
-                style: TextStyle(fontSize: 18),
+                style: TextStyle(fontSize: 18,color: Colors.white),
               ),
       ),
     );
@@ -132,12 +131,12 @@ class SweetSheetAction extends StatelessWidget {
     return icon == null
         ? FlatButton(
             onPressed: onPressed,
-            child: Text(title),
+            child: Text(title,style: TextStyle(color: Colors.white),),
           )
         : FlatButton.icon(
             onPressed: onPressed,
             label: Text(title),
-            icon: Icon(icon),
+            icon: Icon(icon,color: Colors.white,),
           );
   }
 }
