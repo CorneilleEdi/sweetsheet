@@ -79,12 +79,27 @@ class SweetSheetAction extends StatelessWidget {
 > Attention : At least one action is required and the icons are IconData for uniformity purpose.
 
 
-The `SweetSheetType` is an class which have four static values and it determine the color of the sheet:
+The `SweetSheetColor` is a class which have four static values and it determine the color of the sheet by creating a `CustomSheetColor`:
 
 - SweetSheetColor.SUCCESS (green)
 - SweetSheetColor.DANGER (red)
 - SweetSheetColor.WARNING (orange)
 - SweetSheetColor.NICE (blue)
+
+## Customisation
+To customise, create a new instance of `CustomSheetColor` and pass it to the argument `color` when calling the method show.
+signature of `CustomSheetColor`:
+
+```dart
+class CustomSheetColor {
+  Color main;
+  Color accent;
+  Color icon;
+
+  CustomSheetColor({@required this.main, @required this.accent, this.icon});
+}
+```
+To customise the action, pass a new color to `color` argument of `SweetSheetAction`.
 
 ## Example:
 
