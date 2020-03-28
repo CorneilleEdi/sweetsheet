@@ -1,30 +1,43 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class SweetSheet {
-  List<Color> _sheetColor(SweetSheetType type) {
-    switch (type) {
-      case SweetSheetType.NICE:
-        return [Color(0xff2979FF), Color(0xff0D47A1)];
-        break;
-      case SweetSheetType.SUCCESS:
-        return [Color(0xff009688), Color(0xff00695C)];
-        break;
-      case SweetSheetType.WARNING:
-        return [Color(0xffFF8C00), Color(0xffF55932)];
-        break;
-      case SweetSheetType.DANGER:
-        return [Color(0xffEF5350), Color(0xffD32F2F)];
-        break;
-      default:
-        return [Color(0xff2979FF), Color(0xff0D47A1)];
-    }
-  }
+class CustomSheetColor {
+  Color main;
+  Color accent;
+  Color icon;
 
+  CustomSheetColor({@required this.main, @required this.accent, this.icon});
+}
+
+class SweetSheetColor {
+  static CustomSheetColor DANGER = CustomSheetColor(
+    main: Color(0xffEF5350),
+    accent: Color(0xffD32F2F),
+    icon: Colors.white,
+  );
+  static CustomSheetColor SUCCESS = CustomSheetColor(
+    main: Color(0xff009688),
+    accent: Color(0xff00695C),
+    icon: Colors.white,
+  );
+  static CustomSheetColor WARNING = CustomSheetColor(
+    main: Color(0xffFF8C00),
+    accent: Color(0xffF55932),
+    icon: Colors.white,
+  );
+  static CustomSheetColor NICE = CustomSheetColor(
+    main: Color(0xff2979FF),
+    accent: Color(0xff0D47A1),
+    icon: Colors.white,
+  );
+}
+
+class SweetSheet {
   show({
     @required BuildContext context,
-    @required String title,
-    @required String description,
-    @required SweetSheetType type,
+    Text title,
+    @required Text description,
+    @required CustomSheetColor color,
     @required SweetSheetAction positive,
     SweetSheetAction negative,
     IconData icon,
@@ -38,24 +51,29 @@ class SweetSheet {
           children: <Widget>[
             Container(
               width: double.infinity,
-              color: _sheetColor(type)[0],
+              color: color.main,
               padding:
                   const EdgeInsets.symmetric(horizontal: 24.0, vertical: 24.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text(
-                    title,
-                    style: TextStyle(fontSize: 28,color: Colors.white,),
-                    textAlign: TextAlign.start,
-                  ),
-                  _buildContent(description, icon)
+                  title == null
+                      ? Container()
+                      : DefaultTextStyle(
+                          style: TextStyle(
+                            fontSize: 24,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          textAlign: TextAlign.start,
+                          child: title),
+                  _buildContent(color, description, icon)
                 ],
               ),
             ),
             Container(
               padding: const EdgeInsets.all(8.0),
-              color: _sheetColor(type)[1],
+              color: color.accent,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: _buildActions(positive, negative),
@@ -67,9 +85,9 @@ class SweetSheet {
     );
   }
 
-  _buildContent(String description, IconData icon) {
+  _buildContent(CustomSheetColor color, Text description, IconData icon) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 16.0),
+      padding: const EdgeInsets.only(top: 12.0),
       child: SingleChildScrollView(
         child: icon != null
             ? Row(
@@ -77,13 +95,12 @@ class SweetSheet {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Expanded(
-                    child: Text(
-                      description,
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.white,
-                      ),
-                    ),
+                    child: DefaultTextStyle(
+                        style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.white,
+                            fontFamily: 'circular'),
+                        child: description),
                   ),
                   SizedBox(
                     width: 16,
@@ -91,13 +108,16 @@ class SweetSheet {
                   Icon(
                     icon,
                     size: 52,
-                    color: Colors.white,
+                    color: color.icon ?? Colors.white,
                   )
                 ],
               )
-            : Text(
-                description,
-                style: TextStyle(fontSize: 18,color: Colors.white),
+            : DefaultTextStyle(
+                style: TextStyle(
+                  fontSize: 18,
+                  color: Colors.white,
+                ),
+                child: description,
               ),
       ),
     );
@@ -106,37 +126,54 @@ class SweetSheet {
   _buildActions(SweetSheetAction positive, SweetSheetAction negative) {
     List<SweetSheetAction> actions = [];
 
+    // This order is important
+    // It helps to place the positive at the right and the negative before
+    if (negative != null) {
+      actions.add(negative);
+    }
+
     if (positive != null) {
       actions.add(positive);
     }
 
-    if (negative != null) {
-      actions.add(negative);
-    }
     return actions;
   }
 }
-
-enum SweetSheetType { SUCCESS, DANGER, NICE, WARNING }
 
 class SweetSheetAction extends StatelessWidget {
   final String title;
   final VoidCallback onPressed;
   final IconData icon;
+  final Color color;
 
-  SweetSheetAction({@required this.title, @required this.onPressed, this.icon});
+  SweetSheetAction({
+    @required this.title,
+    @required this.onPressed,
+    this.icon,
+    this.color = Colors.white,
+  });
 
   @override
   Widget build(BuildContext context) {
     return icon == null
         ? FlatButton(
             onPressed: onPressed,
-            child: Text(title,style: TextStyle(color: Colors.white),),
+            child: Text(
+              title,
+              style: TextStyle(
+                color: color,
+              ),
+            ),
           )
         : FlatButton.icon(
             onPressed: onPressed,
-            label: Text(title),
-            icon: Icon(icon,color: Colors.white,),
+            label: Text(
+              title,
+            ),
+            icon: Icon(
+              icon,
+              color: color,
+            ),
           );
   }
 }

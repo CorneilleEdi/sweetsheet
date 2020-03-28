@@ -22,7 +22,7 @@ Add this to your package's pubspec.yaml file:
 
 ```
 dependencies:
-  sweetsheet: ^0.1.3
+  sweetsheet: ^0.2.0
 ```
 
 And import it:
