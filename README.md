@@ -10,6 +10,12 @@ Show beautiful bottom sheet as confirmation dialog quickly and easily.
 |:-------------:|:------------------:|
 | ![success](https://github.com/CorneilleEdi/sweetsheet/raw/master/assets/success.jpg)        | ![danger](https://github.com/CorneilleEdi/sweetsheet/raw/master/assets/danger.jpg) |
 
+and since version `0.2.0` , it is fully customisable.
+
+| custom dark        | custom light       |
+|:-------------:|:------------------:|
+| ![success](https://github.com/CorneilleEdi/sweetsheet/raw/master/assets/black.jpg)        | ![danger](https://github.com/CorneilleEdi/sweetsheet/raw/master/assets/light.jpg) |
+
 
 ## Getting Started
 
@@ -41,11 +47,11 @@ Now you can show the bottom sheet by calling the method `show()` on the instance
 This is the signature of the `show` method
 
 ```dart
-show({
+ show({
     @required BuildContext context,
-    @required String title,
-    @required String description,
-    @required SweetSheetType type,
+    Text title,
+    @required Text description,
+    @required CustomSheetColor color,
     @required SweetSheetAction positive,
     SweetSheetAction negative,
     IconData icon,
@@ -59,45 +65,83 @@ class SweetSheetAction extends StatelessWidget {
   final String title;
   final VoidCallback onPressed;
   final IconData icon;
+  final Color color;
 
-  SweetSheetAction({@required this.title, @required this.onPressed, this.icon});
+  SweetSheetAction({
+    @required this.title,
+    @required this.onPressed,
+    this.icon,
+    this.color = Colors.white,
+  });  
 }
 ```
 
 > Attention : At least one action is required and the icons are IconData for uniformity purpose.
 
 
-The `SweetSheetType` is an enum which have four values and it determine the color of the sheet:
+The `SweetSheetType` is an class which have four static values and it determine the color of the sheet:
 
-- SweetSheetType.SUCCESS (green)
-- SweetSheetType.DANGER (red)
-- SweetSheetType.WARNING (orange)
-- SweetSheetType.NICE (blue)
+- SweetSheetColor.SUCCESS (green)
+- SweetSheetColor.DANGER (red)
+- SweetSheetColor.WARNING (orange)
+- SweetSheetColor.NICE (blue)
 
 ## Example:
+
+#### Warning
+
 ```dart
 _sweetSheet.show(
     context: context,
-    title: "Connect your watch",
-    description:
-        'To import your health data, you have to connect your smartwatch fist.',
-    type: SweetSheetType.NICE,
-    icon: Icons.watch,
+    title: Text("Attention"),
+    description: Text(
+        'Your app is not connected to internet actually, please turn on Wifi/Celullar data.'),
+    color: SweetSheetColor.WARNING,
+    icon: Icons.portable_wifi_off,
     positive: SweetSheetAction(
       onPressed: () {
         Navigator.of(context).pop();
       },
-      title: 'CANCEL',
+      title: 'OPEN SETTING',
+      icon: Icons.open_in_new,
     ),
     negative: SweetSheetAction(
       onPressed: () {
         Navigator.of(context).pop();
       },
-      title: 'CONNECT',
-      icon: Icons.open_in_new,
+      title: 'CANCEL',
     ),
 );
- 
+```
+
+#### Custom Light
+
+```dart
+_sweetSheet.show(
+    context: context,
+    description: Text(
+      'Place your order. Please confirm the placement of your order : Iphone X 128GB',
+      style: TextStyle(color: Color(0xff2D3748)),
+    ),
+    color: CustomSheetColor(
+      main: Colors.white,
+      accent: Color(0xff5A67D8),
+      icon: Color(0xff5A67D8),
+    ),
+    icon: Icons.local_shipping,
+    positive: SweetSheetAction(
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
+      title: 'CONTINUE',
+    ),
+    negative: SweetSheetAction(
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
+      title: 'CANCEL',
+  ),
+);
 ```
 
 ### That is all. Have fun!
