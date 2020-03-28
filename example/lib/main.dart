@@ -46,10 +46,10 @@ class _HomePageState extends State<HomePage> {
               onClick: () {
                 _sweetSheet.show(
                   context: context,
-                  title: "Lorem Ipsum",
-                  description:
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. no you condimentum finibus ut ut lorem. Ut pellentesque mauris ut arcu rutrum, at tincidunt arcu tincidunt ',
-                  type: SweetSheetType.SUCCESS,
+                  title: Text("Lorem Ipsum"),
+                  description: Text(
+                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. no you condimentum finibus ut ut lorem. Ut pellentesque mauris ut arcu rutrum, at tincidunt arcu tincidunt"),
+                  color: SweetSheetColor.SUCCESS,
                   positive: SweetSheetAction(
                     onPressed: () {
                       Navigator.of(context).pop();
@@ -65,21 +65,22 @@ class _HomePageState extends State<HomePage> {
               onClick: () {
                 _sweetSheet.show(
                   context: context,
-                  title: "Delete this post?",
-                  description: "This action will permanently delete this post.",
-                  type: SweetSheetType.DANGER,
+                  title: Text("Delete this post?"),
+                  description:
+                      Text("This action will permanently delete this post."),
+                  color: SweetSheetColor.DANGER,
                   icon: Icons.delete,
                   positive: SweetSheetAction(
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
-                    title: 'CANCEL',
+                    title: 'DELETE',
                   ),
                   negative: SweetSheetAction(
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
-                    title: 'DELETE',
+                    title: 'CANCEL',
                   ),
                 );
               },
@@ -90,23 +91,23 @@ class _HomePageState extends State<HomePage> {
               onClick: () {
                 _sweetSheet.show(
                   context: context,
-                  title: "Attention",
-                  description:
-                  'Your app is not connected to internet actually, please turn on Wifi/Celullar data.',
-                  type: SweetSheetType.WARNING,
+                  title: Text("Attention"),
+                  description: Text(
+                      'Your app is not connected to internet actually, please turn on Wifi/Celullar data.'),
+                  color: SweetSheetColor.WARNING,
                   icon: Icons.portable_wifi_off,
                   positive: SweetSheetAction(
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
-                    title: 'CANCEL',
+                    title: 'OPEN SETTING',
+                    icon: Icons.open_in_new,
                   ),
                   negative: SweetSheetAction(
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
-                    title: 'OPEN SETTING',
-                    icon: Icons.open_in_new,
+                    title: 'CANCEL',
                   ),
                 );
               },
@@ -117,23 +118,75 @@ class _HomePageState extends State<HomePage> {
               onClick: () {
                 _sweetSheet.show(
                   context: context,
-                  title: "Connect your watch",
-                  description:
-                  'To import your health data, you have to connect your smartwatch fist.',
-                  type: SweetSheetType.NICE,
+                  title: Text("Connect your watch"),
+                  description: Text(
+                      'To import your health data, you have to connect your smartwatch fist.'),
+                  color: SweetSheetColor.NICE,
                   icon: Icons.watch,
                   positive: SweetSheetAction(
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
-                    title: 'CANCEL',
+                    title: 'CONNECT',
+                    icon: Icons.open_in_new,
                   ),
                   negative: SweetSheetAction(
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
-                    title: 'CONNECT',
-                    icon: Icons.open_in_new,
+                    title: 'CANCEL',
+                  ),
+                );
+              },
+            ),
+            LargeButton(
+              context: context,
+              text: "Sheet with custom dark color",
+              onClick: () {
+                _sweetSheet.show(
+                  context: context,
+                  title: Text("Welcome back"),
+                  description: Text(
+                      'We are happy to see you again. We have some new things for you.'),
+                  color: CustomSheetColor(
+                      main: Colors.black12, accent: Colors.black87),
+                  icon: Icons.bubble_chart,
+                  positive: SweetSheetAction(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    title: 'LET\'S GO',
+                  ),
+                );
+              },
+            ),
+            LargeButton(
+              context: context,
+              text: "Sheet with custom light color",
+              onClick: () {
+                _sweetSheet.show(
+                  context: context,
+                  description: Text(
+                    'Place your order. Please confirm the placement of your order : Iphone X 128GB',
+                    style: TextStyle(color: Color(0xff2D3748)),
+                  ),
+                  color: CustomSheetColor(
+                    main: Colors.white,
+                    accent: Color(0xff5A67D8),
+                    icon: Color(0xff5A67D8),
+                  ),
+                  icon: Icons.local_shipping,
+                  positive: SweetSheetAction(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    title: 'CONTINUE',
+                  ),
+                  negative: SweetSheetAction(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    title: 'CANCEL',
                   ),
                 );
               },
