@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
 class HomePage extends StatefulWidget {
   final String title;
 
-  HomePage({this.title});
+  HomePage({required this.title});
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -149,7 +149,10 @@ class _HomePageState extends State<HomePage> {
                   description: Text(
                       'We are happy to see you again. We have some new things for you.'),
                   color: CustomSheetColor(
-                      main: Colors.black12, accent: Colors.black87),
+                    main: Colors.black12,
+                    accent: Colors.black87,
+                    icon: Colors.white,
+                  ),
                   icon: Icons.bubble_chart,
                   positive: SweetSheetAction(
                     onPressed: () {
@@ -198,15 +201,17 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-
 class LargeButton extends StatelessWidget {
   final BuildContext context;
   final String text;
   final VoidCallback onClick;
 
-  const LargeButton(
-      {Key key, @required this.context, @required this.text, this.onClick})
-      : super(key: key);
+  const LargeButton({
+    Key? key,
+    required this.context,
+    required this.text,
+    required this.onClick,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -6,7 +6,8 @@ class CustomSheetColor {
   Color accent;
   Color icon;
 
-  CustomSheetColor({@required this.main, @required this.accent, this.icon});
+  CustomSheetColor(
+      {required this.main, required this.accent, required this.icon});
 }
 
 class SweetSheetColor {
@@ -34,17 +35,19 @@ class SweetSheetColor {
 
 class SweetSheet {
   show({
-    @required BuildContext context,
-    Text title,
-    @required Text description,
-    @required CustomSheetColor color,
-    @required SweetSheetAction positive,
-    SweetSheetAction negative,
-    IconData icon,
+    required BuildContext context,
+    Text? title,
+    required Text description,
+    required CustomSheetColor color,
+    required SweetSheetAction positive,
+    SweetSheetAction? negative,
+    IconData? icon,
+    bool useRootNavigator = false,
   }) {
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
+      useRootNavigator: useRootNavigator,
       builder: (BuildContext context) {
         return Column(
           mainAxisSize: MainAxisSize.min,
@@ -85,7 +88,7 @@ class SweetSheet {
     );
   }
 
-  _buildContent(CustomSheetColor color, Text description, IconData icon) {
+  _buildContent(CustomSheetColor color, Text description, IconData? icon) {
     return Padding(
       padding: const EdgeInsets.only(top: 12.0),
       child: SingleChildScrollView(
@@ -108,7 +111,7 @@ class SweetSheet {
                   Icon(
                     icon,
                     size: 52,
-                    color: color.icon ?? Colors.white,
+                    color: color.icon,
                   )
                 ],
               )
@@ -123,7 +126,7 @@ class SweetSheet {
     );
   }
 
-  _buildActions(SweetSheetAction positive, SweetSheetAction negative) {
+  _buildActions(SweetSheetAction? positive, SweetSheetAction? negative) {
     List<SweetSheetAction> actions = [];
 
     // This order is important
@@ -143,12 +146,12 @@ class SweetSheet {
 class SweetSheetAction extends StatelessWidget {
   final String title;
   final VoidCallback onPressed;
-  final IconData icon;
+  final IconData? icon;
   final Color color;
 
   SweetSheetAction({
-    @required this.title,
-    @required this.onPressed,
+    required this.title,
+    required this.onPressed,
     this.icon,
     this.color = Colors.white,
   });
@@ -156,7 +159,7 @@ class SweetSheetAction extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return icon == null
-        ? FlatButton(
+        ? TextButton(
             onPressed: onPressed,
             child: Text(
               title,
@@ -165,10 +168,13 @@ class SweetSheetAction extends StatelessWidget {
               ),
             ),
           )
-        : FlatButton.icon(
+        : TextButton.icon(
             onPressed: onPressed,
             label: Text(
               title,
+              style: TextStyle(
+                color: color,
+              ),
             ),
             icon: Icon(
               icon,
