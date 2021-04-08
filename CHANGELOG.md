@@ -22,3 +22,6 @@
 - add color to action
 - add `CustomSheetColor` for Colors customisation
   
+# 0.3.0
+- **Breaking Change** Migrate to null safety
+- Allow for a root navigator (issue [#3](https://github.com/CorneilleEdi/sweetsheet/issues/3))
