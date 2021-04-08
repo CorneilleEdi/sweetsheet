@@ -1,20 +1,20 @@
 # sweetsheet
 Show beautiful bottom sheet as confirmation dialog quickly and easily.
 
-| nice        | warning       |
-|:-------------:|:------------------:|
-| ![nice](https://github.com/CorneilleEdi/sweetsheet/raw/master/assets/nice_sheet.jpg)        | ![warning](https://github.com/CorneilleEdi/sweetsheet/raw/master/assets/warning_sheet.jpg) |
+|                                         nice                                         |                                          warning                                           |
+| :----------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------: |
+| ![nice](https://github.com/CorneilleEdi/sweetsheet/raw/master/assets/nice_sheet.jpg) | ![warning](https://github.com/CorneilleEdi/sweetsheet/raw/master/assets/warning_sheet.jpg) |
 
 
-| success        | danger       |
-|:-------------:|:------------------:|
-| ![success](https://github.com/CorneilleEdi/sweetsheet/raw/master/assets/success.jpg)        | ![danger](https://github.com/CorneilleEdi/sweetsheet/raw/master/assets/danger.jpg) |
+|                                       success                                        |                                       danger                                       |
+| :----------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------: |
+| ![success](https://github.com/CorneilleEdi/sweetsheet/raw/master/assets/success.jpg) | ![danger](https://github.com/CorneilleEdi/sweetsheet/raw/master/assets/danger.jpg) |
 
 and since version `0.2.0` , it is fully customisable.
 
-| custom dark        | custom light       |
-|:-------------:|:------------------:|
-| ![success](https://github.com/CorneilleEdi/sweetsheet/raw/master/assets/black.jpg)        | ![danger](https://github.com/CorneilleEdi/sweetsheet/raw/master/assets/light.jpg) |
+|                                    custom dark                                     |                                   custom light                                    |
+| :--------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------: |
+| ![success](https://github.com/CorneilleEdi/sweetsheet/raw/master/assets/black.jpg) | ![danger](https://github.com/CorneilleEdi/sweetsheet/raw/master/assets/light.jpg) |
 
 
 ## Getting Started
@@ -28,7 +28,7 @@ Add this to your package's pubspec.yaml file:
 
 ```
 dependencies:
-  sweetsheet: ^0.2.0
+  sweetsheet: ^0.3.1
 ```
 
 And import it:
@@ -48,13 +48,15 @@ This is the signature of the `show` method
 
 ```dart
  show({
-    @required BuildContext context,
-    Text title,
-    @required Text description,
-    @required CustomSheetColor color,
-    @required SweetSheetAction positive,
-    SweetSheetAction negative,
-    IconData icon,
+    required BuildContext context,
+    Text? title,
+    required Text description,
+    required CustomSheetColor color,
+    required SweetSheetAction positive,
+    SweetSheetAction? negative,
+    IconData? icon,
+    bool useRootNavigator = false,
+    bool isDismissible = true,
   }){}
 ```
 
