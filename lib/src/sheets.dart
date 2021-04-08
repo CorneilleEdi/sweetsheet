@@ -43,8 +43,11 @@ class SweetSheet {
     SweetSheetAction? negative,
     IconData? icon,
     bool useRootNavigator = false,
+    bool isDismissible = true,
   }) {
     showModalBottomSheet(
+      isDismissible: isDismissible,
+      enableDrag: isDismissible,
       context: context,
       isScrollControlled: true,
       useRootNavigator: useRootNavigator,

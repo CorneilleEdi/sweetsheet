@@ -1,4 +1,4 @@
-# 0.1.0 
+# 0.1.0
 
 - first release
   
@@ -23,5 +23,10 @@
 - add `CustomSheetColor` for Colors customisation
   
 # 0.3.0
+
 - **Breaking Change** Migrate to null safety
 - Allow for a root navigator (issue [#3](https://github.com/CorneilleEdi/sweetsheet/issues/3))
+
+# 0.3.1
+
+- Add `isDismissible` to prevent clicking off the alert or dragging to dismiss

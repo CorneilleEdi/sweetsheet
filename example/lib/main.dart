@@ -61,9 +61,10 @@ class _HomePageState extends State<HomePage> {
             ),
             LargeButton(
               context: context,
-              text: 'Danger sheet with icon',
+              text: 'Danger sheet with icon not dismissible',
               onClick: () {
                 _sweetSheet.show(
+                  isDismissible: false,
                   context: context,
                   title: Text("Delete this post?"),
                   description:
