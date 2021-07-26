@@ -40,6 +40,8 @@ class SweetSheet {
     required Text description,
     required CustomSheetColor color,
     required SweetSheetAction positive,
+    EdgeInsets? contentPadding = const EdgeInsets.symmetric(horizontal: 24.0, vertical: 24.0),
+    EdgeInsets? actionPadding = const EdgeInsets.all(8.0),
     SweetSheetAction? negative,
     IconData? icon,
     bool useRootNavigator = false,
@@ -58,8 +60,7 @@ class SweetSheet {
             Container(
               width: double.infinity,
               color: color.main,
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 24.0, vertical: 24.0),
+              padding: contentPadding,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -78,7 +79,7 @@ class SweetSheet {
               ),
             ),
             Container(
-              padding: const EdgeInsets.all(8.0),
+              padding: actionPadding,
               color: color.accent,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
