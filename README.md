@@ -10,7 +10,7 @@ Show beautiful bottom sheet as confirmation dialog quickly and easily.
 | :----------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------: |
 | ![success](https://github.com/CorneilleEdi/sweetsheet/raw/master/assets/success.jpg) | ![danger](https://github.com/CorneilleEdi/sweetsheet/raw/master/assets/danger.jpg) |
 
-and since version `0.2.0` , it is fully customisable.
+and since version `0.2.0` , it is fully customizable.
 
 |                                    custom dark                                     |                                   custom light                                    |
 | :--------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------: |
@@ -28,7 +28,7 @@ Add this to your package's pubspec.yaml file:
 
 ```
 dependencies:
-  sweetsheet: ^0.3.1
+  sweetsheet: ^0.4.0
 ```
 
 And import it:
@@ -47,17 +47,19 @@ Now you can show the bottom sheet by calling the method `show()` on the instance
 This is the signature of the `show` method
 
 ```dart
- show({
+  show({
     required BuildContext context,
     Text? title,
     required Text description,
     required CustomSheetColor color,
     required SweetSheetAction positive,
+    EdgeInsets? contentPadding = const EdgeInsets.symmetric(horizontal: 24.0, vertical: 24.0),
+    EdgeInsets? actionPadding = const EdgeInsets.all(8.0),
     SweetSheetAction? negative,
     IconData? icon,
     bool useRootNavigator = false,
     bool isDismissible = true,
-  }){}
+  }) {}
 ```
 
 This is the signature of the `SweetSheetAction` widget.
