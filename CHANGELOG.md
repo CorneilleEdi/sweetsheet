@@ -30,3 +30,7 @@
 # 0.3.1
 
 - Add `isDismissible` to prevent clicking off the alert or dragging to dismiss
+
+# 0.4.0
+
+- Add `contentPadding` and `actionPadding`
