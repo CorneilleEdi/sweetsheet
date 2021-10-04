@@ -150,9 +150,9 @@ class _HomePageState extends State<HomePage> {
                   description: Text(
                       'We are happy to see you again. We have some new things for you.'),
                   color: CustomSheetColor(
-                    main: Colors.black12,
-                    accent: Colors.black87,
-                    icon: Colors.white,
+                    mainColor: Colors.black12,
+                    accentColor: Colors.black87,
+                    iconColor: Colors.white,
                   ),
                   icon: Icons.bubble_chart,
                   positive: SweetSheetAction(
@@ -175,9 +175,9 @@ class _HomePageState extends State<HomePage> {
                     style: TextStyle(color: Color(0xff2D3748)),
                   ),
                   color: CustomSheetColor(
-                    main: Colors.white,
-                    accent: Color(0xff5A67D8),
-                    icon: Color(0xff5A67D8),
+                    mainColor: Colors.white,
+                    accentColor: Color(0xff5A67D8),
+                    iconColor: Color(0xff5A67D8),
                   ),
                   icon: Icons.local_shipping,
                   positive: SweetSheetAction(
