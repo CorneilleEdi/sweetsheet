@@ -44,6 +44,8 @@ class SweetSheet {
     EdgeInsets? actionPadding = const EdgeInsets.all(8.0),
     SweetSheetAction? negative,
     IconData? icon,
+    ///For User's Custom Widget
+    Widget? custom,
     double iconSize = 52,
     double titleFontSize = 24,
 
@@ -92,7 +94,8 @@ class SweetSheet {
                         ),
                         textAlign: TextAlign.start,
                         child: title),
-                    _buildContent(color, description, icon,fontFamily,descriptionFontSize,iconSize)
+                    _buildContent(color, description, icon,fontFamily,descriptionFontSize,iconSize),
+                    custom??SizedBox.shrink(),
                   ],
                 ),
               ),
